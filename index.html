@@ -5,205 +5,224 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Badrinath Nandaluri — Software Engineer, AI &amp; LLM Systems</title>
   <meta name="description" content="Portfolio of Badrinath Nandaluri — software engineer building AI systems end to end: LLMs and RAG, computer vision, and the full-stack products around them.">
-  <meta name="theme-color" content="#09090a">
+  <meta name="theme-color" content="#f5f4f0">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Badrinath Nandaluri — Software Engineer, AI &amp; LLM Systems">
   <meta property="og:description" content="AI systems built end to end: LLMs and RAG, computer vision, and the full-stack products around them.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/_viz.css">
+  <link rel="stylesheet" href="css/extras.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-  <!-- Intro loader -->
+  <!-- Loader -->
   <div class="loader" aria-hidden="true">
-    <div class="loader__row">
-      <span class="loader__name">Badrinath Nandaluri</span>
-      <span class="loader__count"><span id="loaderCount">0</span></span>
-    </div>
-    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <div class="loader__orbit" id="orbit"></div>
+    <div class="loader__meta"><span>Badrinath Nandaluri</span><span><b id="loaderCount">0</b>%</span></div>
+    <i class="loader__panel"></i><i class="loader__panel"></i><i class="loader__panel"></i><i class="loader__panel"></i><i class="loader__panel"></i>
   </div>
 
-  <!-- Living background -->
-  <canvas id="gl" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
-
-  <!-- Cursor -->
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
   <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
+  <!-- Nav -->
   <header class="nav" id="nav">
-    <a class="nav__logo" href="#top" aria-label="Back to top">B<em>N</em></a>
-    <nav class="nav__links" aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#beyond">Beyond</a>
+    <a class="nav__logo" href="#top" aria-label="Back to top">BN<i></i></a>
+    <nav class="nav__pill" aria-label="Sections">
+      <span class="nav__ind" id="navInd"></span>
+      <a href="#top" data-sec="top">Home</a>
+      <a href="#about" data-sec="about">About</a>
+      <a href="#experience" data-sec="experience">Experience</a>
+      <a href="#work" data-sec="work">Projects</a>
+      <a href="#skills" data-sec="skills">Toolkit</a>
+      <a href="#beyond" data-sec="beyond">Beyond</a>
     </nav>
-    <a class="nav__cta" href="#contact" data-magnetic><i class="dot"></i>Get in touch</a>
+    <div class="nav__social">
+      <a href="https://github.com/badrinathnandaluri" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+      <a href="https://www.linkedin.com/in/badrinath-nandaluri" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+      <a href="https://www.instagram.com/badrinath_nandaluri" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+      <a class="nav__cta" href="#contact">Contact</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main>
 
     <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero__top">
-        <span class="mono">Portfolio — 2026</span>
-        <span class="mono hero__coords">Open to SDE &amp; AI roles · Class of 2027</span>
-      </div>
+    <section class="hero" id="top" data-theme="light">
+      <canvas class="hero__dots" id="dots" aria-hidden="true"></canvas>
 
       <h1 class="hero__title" aria-label="Badrinath Nandaluri">
-        <span class="line"><span class="line__in">Badrinath</span></span>
-        <span class="line line--serif"><span class="line__in"><em>Nandaluri</em></span></span>
+        <span class="hero__line" data-depth="0.6"><span class="chars">Badrinath</span></span>
+        <span class="hero__line hero__line--fade" data-depth="1"><span class="chars">Nandaluri</span></span>
       </h1>
 
-      <div class="hero__bottom">
-        <p class="hero__lede fade-up">
-          Software engineer building <em>AI systems</em> end to end — LLMs and RAG,
-          computer vision, and the full-stack products around them.
-        </p>
-        <ul class="hero__meta fade-up">
-          <li><span class="mono">Now</span><span><i class="dot"></i>Final-year B.Tech, AI &amp; ML</span></li>
-          <li><span class="mono">Next</span><span>Regal Rexnord — from Dec 2026</span></li>
-          <li><span class="mono">Based</span><span>Hyderabad, India</span></li>
+      <div class="hero__portrait" data-depth="-0.8">
+        <img src="assets/portrait.png" alt="Portrait of Badrinath Nandaluri" id="portraitImg">
+        <canvas id="portraitGl" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="hero__title hero__title--ghost" aria-hidden="true">
+        <span class="hero__line" data-depth="0.6">&nbsp;</span>
+        <span class="hero__line hero__line--stroke" data-depth="1"><span class="chars">Nandaluri</span></span>
+      </div>
+
+      <div class="hero__left fade">
+        <span class="label">Software Engineer<br>AI &amp; LLM Systems · Class of 2027</span>
+        <a class="round" href="#about" aria-label="Scroll to about" data-magnetic><span>↘</span></a>
+      </div>
+
+      <div class="hero__right fade">
+        <p class="label">I build AI systems end to end — the model, the pipeline that feeds it, and the product around it.</p>
+        <ul class="hero__roles" id="roles">
+          <li class="on">LLMs &amp; RAG</li>
+          <li>Computer Vision</li>
+          <li>Full-Stack Engineering</li>
+          <li>AI Evaluation</li>
         </ul>
-        <a class="hero__scroll fade-up" href="#about" aria-label="Scroll to about">
-          <span class="mono">Scroll</span><i></i>
-        </a>
+      </div>
+
+      <div class="hero__foot fade">
+        <span><i class="live"></i>Open to SDE &amp; AI roles</span>
+        <span>Next — Regal Rexnord, Dec 2026</span>
+        <span>Hyderabad, India</span>
       </div>
     </section>
 
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>LLMs &amp; RAG</span><b>✳</b><span><em>Computer Vision</em></span><b>✳</b><span>Diffusion Models</span><b>✳</b><span><em>Full-Stack Engineering</em></span><b>✳</b><span>AI Evaluation</span><b>✳</b>
-        <span>LLMs &amp; RAG</span><b>✳</b><span><em>Computer Vision</em></span><b>✳</b><span>Diffusion Models</span><b>✳</b><span><em>Full-Stack Engineering</em></span><b>✳</b><span>AI Evaluation</span><b>✳</b>
-      </div>
-    </div>
-
-    <!-- ============ ABOUT ============ -->
-    <section class="section about" id="about">
-      <div class="section__head">
-        <span class="mono idx">01</span>
-        <span class="mono">About</span>
-      </div>
-
-      <div class="about__grid">
-        <div class="about__text">
-          <p class="about__statement" data-scrub>
-            I'm a final-year AI &amp; Machine Learning undergraduate at VNR VJIET who likes owning the
-            whole problem — the model, the pipeline that feeds it, and the interface a person actually
-            touches. I've restored fog-blinded camera feeds with diffusion models, built local-first RAG
-            copilots, and shipped full-stack platforms. Graduating in 2027.
+    <!-- ============ ABOUT — scroll-expanding stage ============ -->
+    <section class="expand" id="about" data-theme="dark">
+      <div class="expand__stage">
+        <div class="expand__word expand__word--l" aria-hidden="true">About</div>
+        <div class="expand__word expand__word--r" aria-hidden="true">Me</div>
+        <div class="expand__card" id="expandCard">
+          <canvas class="swirl" id="swirlAbout" aria-hidden="true"></canvas>
+          <div class="expand__shade"></div>
+        </div>
+        <div class="expand__content" id="expandContent">
+          <span class="label label--inv">01 — About</span>
+          <p class="statement" data-scrub>
+            I'm a final-year AI &amp; Machine Learning undergraduate at VNR VJIET who likes owning the whole
+            problem. I've restored fog-blinded camera feeds with diffusion models, built local-first RAG
+            copilots, and shipped the full-stack platforms around them.
           </p>
+        </div>
+        <span class="expand__hint label label--inv" id="expandHint">Keep scrolling</span>
+      </div>
+    </section>
 
-          <div class="about__edu reveal">
-            <div>
-              <span class="mono">Education</span>
+    <section class="more" data-theme="dark">
+      <div class="more__grid">
+        <figure class="more__photo reveal" data-tilt>
+          <div class="more__photo-in"><img src="assets/photo.jpg" alt="Badrinath Nandaluri" loading="lazy"></div>
+          <figcaption class="label label--inv"><span>Badrinath Nandaluri</span><span>HYD · IN</span></figcaption>
+        </figure>
+        <div class="more__text">
+          <h2 class="h2 h2--inv" data-split>Model, pipeline, <em>interface.</em> All three.</h2>
+          <div class="more__cols">
+            <div class="reveal">
+              <span class="label label--inv">Education</span>
               <p>B.Tech, Computer Science &amp; Engineering (AI &amp; ML)<br><span class="dim">VNR Vignana Jyothi Institute of Engineering &amp; Technology · 2023 – 2027</span></p>
             </div>
-            <div>
-              <span class="mono">Looking for</span>
+            <div class="reveal">
+              <span class="label label--inv">Looking for</span>
               <p>SDE and AI engineering roles<br><span class="dim">LLM applications · ML systems · full-stack</span></p>
             </div>
           </div>
         </div>
-
-        <figure class="about__photo reveal" data-tilt>
-          <div class="about__photo-in">
-            <img src="assets/photo.jpg" alt="Portrait of Badrinath Nandaluri" loading="lazy" onerror="this.parentNode.classList.add('no-photo');this.remove()">
-            <div class="about__mono" aria-hidden="true">B<em>N</em></div>
-          </div>
-          <figcaption class="mono"><span>Badrinath Nandaluri</span><span>HYD · IN</span></figcaption>
-        </figure>
       </div>
-
       <ul class="stats">
-        <li class="reveal"><strong><span data-count="8.67" data-decimals="2">8.67</span></strong><span class="mono">CGPA / 10</span></li>
-        <li class="reveal"><strong><span data-count="4">4</span>+</strong><span class="mono">National hackathon finals</span></li>
-        <li class="reveal"><strong><span data-count="5000" data-sep="1">5,000</span>+</strong><span class="mono">Participants at a hackathon I led</span></li>
-        <li class="reveal"><strong><span data-count="7">7</span></strong><span class="mono">AI &amp; full-stack projects built</span></li>
+        <li class="reveal"><strong><span data-count="8.67" data-decimals="2">8.67</span></strong><span class="label label--inv">CGPA / 10</span></li>
+        <li class="reveal"><strong><span data-count="4">4</span>+</strong><span class="label label--inv">National hackathon finals</span></li>
+        <li class="reveal"><strong><span data-count="5000" data-sep="1">5,000</span>+</strong><span class="label label--inv">Participants at a hackathon I helped run</span></li>
+        <li class="reveal"><strong><span data-count="7">7</span></strong><span class="label label--inv">AI &amp; full-stack projects built</span></li>
       </ul>
     </section>
 
-    <!-- ============ EXPERIENCE ============ -->
-    <section class="section experience" id="experience">
-      <div class="section__head">
-        <span class="mono idx">02</span>
-        <span class="mono">Experience</span>
+    <!-- ============ EXPERIENCE — horizontal ============ -->
+    <section class="hx" id="experience" data-theme="light">
+      <div class="hx__stage">
+        <div class="hx__track" id="hxTrack">
+          <div class="hx__intro">
+            <span class="label">02 — Experience</span>
+            <h2 class="h2" data-split>Where I've been <em>putting in the hours.</em></h2>
+            <span class="label hx__hint">Scroll <b>→</b></span>
+          </div>
+
+          <article class="hx__panel">
+            <span class="hx__num" aria-hidden="true">26</span>
+            <div class="hx__body">
+              <div class="hx__when label">Dec 2026 → <span class="pill">Incoming</span></div>
+              <h3>Associate Graduate Engineer Trainee</h3>
+              <p class="hx__org">Regal Rexnord · Internship</p>
+              <p class="hx__desc">A 6–8 month engineering internship starting 1 December 2026, with tracks across process automation, web development and generative-AI engineering.</p>
+            </div>
+          </article>
+
+          <article class="hx__panel">
+            <span class="hx__num" aria-hidden="true">26</span>
+            <div class="hx__body">
+              <div class="hx__when label">Sep 2026 — Nov 2026</div>
+              <h3>Benchmark Engineer</h3>
+              <p class="hx__org">Project Dynamo · Handshake AI</p>
+              <p class="hx__desc">Worked on specification-driven benchmarks for AI agents — verifier design, hidden-test construction, and tests that separate genuinely robust solutions from ones that lean on reasoning shortcuts and hidden assumptions.</p>
+            </div>
+          </article>
+
+          <article class="hx__panel">
+            <span class="hx__num" aria-hidden="true">25</span>
+            <div class="hx__body">
+              <div class="hx__when label">Jan 2025 — Jul 2025</div>
+              <h3>Software Development Intern</h3>
+              <p class="hx__org">GearUp4 E-Learning Platform · VNR VJIET</p>
+              <p class="hx__desc">Built an LLM-driven scaffolding pipeline that generates full course hierarchies from an instructor's prompt, alongside the MERN platform beneath it — modular course management, JWT auth with role-based access, and REST APIs for multi-instructor workflows.</p>
+            </div>
+          </article>
+
+          <article class="hx__panel">
+            <span class="hx__num" aria-hidden="true">25</span>
+            <div class="hx__body">
+              <div class="hx__when label">Jul 2025</div>
+              <h3>Camp Coordinator Intern</h3>
+              <p class="hx__org">Voice4Girls</p>
+              <p class="hx__desc">Ran awareness sessions for 100+ school students and coordinated a team of 10+ volunteers — schedules, materials and feedback loops.</p>
+            </div>
+          </article>
+
+          <div class="hx__end" aria-hidden="true"><span>Next: the work</span><b>↓</b></div>
+        </div>
+        <div class="hx__bar" aria-hidden="true"><i id="hxBar"></i></div>
       </div>
-      <h2 class="section__title" data-split>Where I've been <em>putting in the hours.</em></h2>
-
-      <ol class="xp">
-        <li class="xp__row reveal">
-          <div class="xp__when mono">Dec 2026 →<span class="tag">Incoming</span></div>
-          <div class="xp__what">
-            <h3>Associate Graduate Engineer Trainee <span class="dim">· Intern</span></h3>
-            <p class="xp__org">Regal Rexnord</p>
-          </div>
-          <p class="xp__desc">A 6–8 month engineering internship starting 1 December 2026, with tracks across process automation, web development and generative-AI engineering.</p>
-        </li>
-
-        <li class="xp__row reveal">
-          <div class="xp__when mono">Sep 2026 — Nov 2026</div>
-          <div class="xp__what">
-            <h3>Benchmark Engineer</h3>
-            <p class="xp__org">Project Dynamo · Handshake AI</p>
-          </div>
-          <p class="xp__desc">Worked on specification-driven benchmarks for AI agents — verifier design, hidden-test construction, and tests that separate genuinely robust solutions from ones that lean on reasoning shortcuts and hidden assumptions.</p>
-        </li>
-
-        <li class="xp__row reveal">
-          <div class="xp__when mono">Jan 2025 — Jul 2025</div>
-          <div class="xp__what">
-            <h3>Software Development Intern</h3>
-            <p class="xp__org">GearUp4 E-Learning Platform · VNR VJIET</p>
-          </div>
-          <p class="xp__desc">Built an LLM-driven scaffolding pipeline that generates full course hierarchies from an instructor's prompt, alongside the MERN platform beneath it — modular course management, JWT auth with role-based access, and REST APIs for multi-instructor workflows.</p>
-        </li>
-
-        <li class="xp__row reveal">
-          <div class="xp__when mono">Jul 2025</div>
-          <div class="xp__what">
-            <h3>Camp Coordinator Intern</h3>
-            <p class="xp__org">Voice4Girls</p>
-          </div>
-          <p class="xp__desc">Ran awareness sessions for 100+ school students and coordinated a team of 10+ volunteers — schedules, materials and feedback loops.</p>
-        </li>
-      </ol>
     </section>
 
-    <!-- ============ WORK ============ -->
-    <section class="section work" id="work">
-      <div class="section__head">
-        <span class="mono idx">03</span>
-        <span class="mono">Selected work</span>
-      </div>
-      <h2 class="section__title" data-split>Things I've built, <em>and what they measured.</em></h2>
+    <!-- ============ PROJECTS — drum wheel ============ -->
+    <section class="works" id="work" data-theme="dark">
+      <div class="works__stage">
+        <div class="works__head">
+          <span class="label label--inv">03 — Selected work</span>
+          <span class="label label--inv works__count"><b id="workIdx">01</b> / 07</span>
+        </div>
 
-      <div class="stack">
+        <div class="wheel" id="wheel" aria-label="Projects">
+          <div class="wheel__ring" id="wheelRing">
+            <button class="wheel__item" type="button">All-Weather Vision</button>
+            <button class="wheel__item" type="button">Echoes in Motion</button>
+            <button class="wheel__item" type="button">AI Resume Copilot</button>
+            <button class="wheel__item" type="button">Event Monitoring</button>
+            <button class="wheel__item" type="button">Loanlytic</button>
+            <button class="wheel__item" type="button">Apartment Billing</button>
+            <button class="wheel__item" type="button">Supply Chain</button>
+          </div>
+        </div>
 
-        <!-- 01 -->
-        <article class="card" id="project-1" style="--i:0">
-          <div class="card__in">
-            <div class="card__body">
-              <div class="card__top mono"><span>01</span><span>Computer vision · Diffusion</span></div>
-              <h3 class="card__title">All-Weather Image Enhancement <em>&amp; Object Detection</em></h3>
-              <p class="card__desc">Fog and rain blind surveillance detectors. This pipeline restores the frame first — latent diffusion with scale-wise distillation and patch-level refinement — then hands it to YOLOv8, fast enough to run live.</p>
-              <dl class="card__metrics">
-                <div><dt>22.75<small>dB</small></dt><dd class="mono">PSNR · RESIDE-6K</dd></div>
-                <div><dt>0.832</dt><dd class="mono">SSIM</dd></div>
-                <div><dt>22.3<small>ms</small></dt><dd class="mono">P95 latency</dd></div>
-              </dl>
-              <div class="card__foot">
-                <ul class="chips"><li>PyTorch</li><li>Latent Diffusion</li><li>YOLOv8</li><li>OpenCV</li><li>Streamlit</li></ul>
-                <a class="arrow-link" href="https://github.com/badrinathnandaluri/All_Weather_Image_Enhancement_and_Object-Detection" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a>
-              </div>
-            </div>
-            <div class="card__visual v-weather" aria-hidden="true">
+        <div class="pds" id="pds">
+          <!-- 01 -->
+          <article class="pd on">
+            <div class="pd__viz viz card__visual v-weather" aria-hidden="true">
               <div class="v-weather__scene">
                 <i class="sun"></i>
                 <i class="bld b1"></i><i class="bld b2"></i><i class="bld b3"></i><i class="bld b4"></i>
@@ -220,246 +239,247 @@
               <span class="v-label v-label--l mono">Input · fog</span>
               <span class="v-label v-label--r mono">Restored + detected</span>
             </div>
-          </div>
-        </article>
-
-        <!-- 02 -->
-        <article class="card" id="project-2" style="--i:1">
-          <div class="card__in">
-            <div class="card__body">
-              <div class="card__top mono"><span>02</span><span>Generative AI · Orchestration</span></div>
-              <h3 class="card__title">Echoes in Motion <em>— folk tales, animated</em></h3>
-              <p class="card__desc">Type in a regional folk story and get back a narrated, animated short film. A Node.js orchestration engine chains four specialised models — a director, an illustrator, a voice actor and an editor — into one automated pipeline.</p>
-              <dl class="card__metrics">
-                <div><dt>4</dt><dd class="mono">Chained AI stages</dd></div>
-                <div><dt>Text → film</dt><dd class="mono">Fully automated</dd></div>
-              </dl>
-              <div class="card__foot">
-                <ul class="chips"><li>Gemini API</li><li>Stability AI</li><li>PlayHT</li><li>FFmpeg</li><li>MERN</li></ul>
-                <a class="arrow-link" href="https://github.com/badrinathnandaluri/echoesinmotion" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a>
-              </div>
+            <div class="pd__body">
+              <span class="label label--inv">Computer vision · Diffusion</span>
+              <h3>All-Weather Image Enhancement <em>&amp; Object Detection</em></h3>
+              <p>Fog and rain blind surveillance detectors. This pipeline restores the frame first — latent diffusion with scale-wise distillation and patch-level refinement — then hands it to YOLOv8, fast enough to run live.</p>
+              <dl><div><dt>22.75<small>dB</small></dt><dd>PSNR · RESIDE-6K</dd></div><div><dt>0.832</dt><dd>SSIM</dd></div><div><dt>22.3<small>ms</small></dt><dd>P95 latency</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>PyTorch</li><li>Latent Diffusion</li><li>YOLOv8</li><li>OpenCV</li><li>Streamlit</li></ul>
+                <a class="link" href="https://github.com/badrinathnandaluri/All_Weather_Image_Enhancement_and_Object-Detection" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a></div>
             </div>
-            <div class="card__visual v-echo" aria-hidden="true">
-              <div class="v-echo__film">
-                <i></i><i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <ol class="v-echo__pipe mono">
-                <li><b>Director</b><span>Gemini</span></li>
-                <li><b>Illustrator</b><span>SD3</span></li>
-                <li><b>Voice</b><span>PlayHT</span></li>
-                <li><b>Editor</b><span>FFmpeg</span></li>
-              </ol>
+          </article>
+
+          <!-- 02 -->
+          <article class="pd">
+            <div class="pd__viz viz card__visual v-echo" aria-hidden="true">
+              <div class="v-echo__film"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <ol class="v-echo__pipe mono"><li><b>Director</b><span>Gemini</span></li><li><b>Illustrator</b><span>SD3</span></li><li><b>Voice</b><span>PlayHT</span></li><li><b>Editor</b><span>FFmpeg</span></li></ol>
               <div class="v-echo__wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             </div>
-          </div>
-        </article>
-
-        <!-- 03 -->
-        <article class="card" id="project-3" style="--i:2">
-          <div class="card__in">
-            <div class="card__body">
-              <div class="card__top mono"><span>03</span><span>LLMs · RAG</span></div>
-              <h3 class="card__title">AI Resume Copilot <em>— private by design</em></h3>
-              <p class="card__desc">A local-first RAG copilot that scores a résumé against a job description and runs mock interviews. The LLM only extracts and normalises skills; the ATS score itself is deterministic set maths, so it can't be hallucinated — and nothing leaves the machine.</p>
-              <dl class="card__metrics">
-                <div><dt>100<small>%</small></dt><dd class="mono">Local inference</dd></div>
-                <div><dt>0</dt><dd class="mono">Cloud API calls</dd></div>
-              </dl>
-              <div class="card__foot">
-                <ul class="chips"><li>Ollama</li><li>ChromaDB</li><li>RAG</li><li>Embeddings</li><li>Streamlit</li></ul>
-                <a class="arrow-link" href="https://github.com/badrinathnandaluri/ai-resume-copilot" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a>
-              </div>
+            <div class="pd__body">
+              <span class="label label--inv">Generative AI · Orchestration</span>
+              <h3>Echoes in Motion <em>— folk tales, animated</em></h3>
+              <p>Type in a regional folk story and get back a narrated, animated short film. A Node.js orchestration engine chains four specialised models — a director, an illustrator, a voice actor and an editor — into one automated pipeline.</p>
+              <dl><div><dt>4</dt><dd>Chained AI stages</dd></div><div><dt>Text → film</dt><dd>Fully automated</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>Gemini API</li><li>Stability AI</li><li>PlayHT</li><li>FFmpeg</li><li>MERN</li></ul>
+                <a class="link" href="https://github.com/badrinathnandaluri/echoesinmotion" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a></div>
             </div>
-            <div class="card__visual v-rag" aria-hidden="true">
+          </article>
+
+          <!-- 03 -->
+          <article class="pd">
+            <div class="pd__viz viz card__visual v-rag" aria-hidden="true">
               <svg class="v-rag__space" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-                <g class="links">
-                  <line x1="200" y1="200" x2="92" y2="118"/><line x1="200" y1="200" x2="310" y2="96"/>
-                  <line x1="200" y1="200" x2="322" y2="262"/><line x1="200" y1="200" x2="120" y2="296"/>
-                  <line x1="200" y1="200" x2="232" y2="336"/>
-                </g>
-                <g class="pts">
-                  <circle cx="92" cy="118" r="5"/><circle cx="310" cy="96" r="5"/><circle cx="322" cy="262" r="5"/>
-                  <circle cx="120" cy="296" r="5"/><circle cx="232" cy="336" r="5"/>
-                </g>
-                <g class="far">
-                  <circle cx="48" cy="210" r="3"/><circle cx="356" cy="170" r="3"/><circle cx="170" cy="52" r="3"/>
-                  <circle cx="262" cy="42" r="3"/><circle cx="60" cy="346" r="3"/><circle cx="348" cy="348" r="3"/>
-                  <circle cx="30" cy="70" r="3"/><circle cx="376" cy="40" r="3"/><circle cx="150" cy="372" r="3"/>
-                </g>
-                <circle class="ring-bg" cx="200" cy="200" r="62"/>
-                <circle class="ring" cx="200" cy="200" r="62" pathLength="100"/>
+                <g class="links"><line x1="200" y1="200" x2="92" y2="118"/><line x1="200" y1="200" x2="310" y2="96"/><line x1="200" y1="200" x2="322" y2="262"/><line x1="200" y1="200" x2="120" y2="296"/><line x1="200" y1="200" x2="232" y2="336"/></g>
+                <g class="pts"><circle cx="92" cy="118" r="5"/><circle cx="310" cy="96" r="5"/><circle cx="322" cy="262" r="5"/><circle cx="120" cy="296" r="5"/><circle cx="232" cy="336" r="5"/></g>
+                <g class="far"><circle cx="48" cy="210" r="3"/><circle cx="356" cy="170" r="3"/><circle cx="170" cy="52" r="3"/><circle cx="262" cy="42" r="3"/><circle cx="60" cy="346" r="3"/><circle cx="348" cy="348" r="3"/><circle cx="30" cy="70" r="3"/><circle cx="376" cy="40" r="3"/><circle cx="150" cy="372" r="3"/></g>
+                <circle class="ring-bg" cx="200" cy="200" r="62"/><circle class="ring" cx="200" cy="200" r="62" pathLength="100"/>
               </svg>
-              <div class="v-rag__score"><strong>87</strong><span class="mono">ATS match</span></div>
+              <div class="v-rag__score"><strong>87</strong><span class="mono">Sample score</span></div>
               <span class="v-tag mono" style="left:9%;top:21%">python ✓</span>
               <span class="v-tag mono" style="right:7%;top:16%">pytorch ✓</span>
               <span class="v-tag mono" style="right:5%;top:68%">rag ✓</span>
               <span class="v-tag v-tag--miss mono" style="left:10%;top:76%">kubernetes ✕</span>
             </div>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="card" id="project-4" style="--i:3">
-          <div class="card__in">
-            <div class="card__body">
-              <div class="card__top mono"><span>04</span><span>Real-time vision · Temporal models</span></div>
-              <h3 class="card__title">AI Event Monitoring <em>Dashboard</em></h3>
-              <p class="card__desc">A real-time safety layer for CCTV: YOLOv8 spots fire, smoke, crowd surges and people who have collapsed, while an LSTM reads the sequence over time to cut false alarms. Operators get alerts, timeline playback and acknowledgement in one UI.</p>
-              <dl class="card__metrics">
-                <div><dt>&lt;40<small>ms</small></dt><dd class="mono">Per frame, on GPU</dd></div>
-                <div><dt>4</dt><dd class="mono">Event classes</dd></div>
-              </dl>
-              <div class="card__foot">
-                <ul class="chips"><li>YOLOv8</li><li>LSTM</li><li>MediaPipe</li><li>OpenCV</li><li>React</li><li>Node.js</li></ul>
-                <a class="arrow-link" href="https://github.com/badrinathnandaluri/AI_Event_Monitoring_Dashboard" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a>
-              </div>
+            <div class="pd__body">
+              <span class="label label--inv">LLMs · RAG</span>
+              <h3>AI Resume Copilot <em>— private by design</em></h3>
+              <p>A local-first RAG copilot that scores a résumé against a job description and runs mock interviews. The LLM only extracts and normalises skills; the ATS score itself is deterministic set maths, so it can't be hallucinated — and nothing leaves the machine.</p>
+              <dl><div><dt>100<small>%</small></dt><dd>Local inference</dd></div><div><dt>0</dt><dd>Cloud API calls</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>Ollama</li><li>ChromaDB</li><li>RAG</li><li>Embeddings</li><li>Streamlit</li></ul>
+                <a class="link" href="https://github.com/badrinathnandaluri/ai-resume-copilot" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a></div>
             </div>
-            <div class="card__visual v-cctv" aria-hidden="true">
+          </article>
+
+          <!-- 04 -->
+          <article class="pd">
+            <div class="pd__viz viz card__visual v-cctv" aria-hidden="true">
               <div class="v-cctv__grid">
                 <div class="cam"><span class="mono">CAM 01</span></div>
                 <div class="cam cam--alert"><span class="mono">CAM 02</span><b><span>smoke 0.91</span></b></div>
                 <div class="cam"><span class="mono">CAM 03</span></div>
                 <div class="cam"><span class="mono">CAM 04</span><b class="ok"><span>crowd · normal</span></b></div>
               </div>
-              <div class="v-cctv__bar mono"><span><i class="rec"></i>LIVE</span><span>4 streams · 38 ms</span></div>
+              <div class="v-cctv__bar mono"><span><i class="rec"></i>LIVE</span><span>4 streams</span></div>
             </div>
-          </div>
-        </article>
-      </div>
+            <div class="pd__body">
+              <span class="label label--inv">Real-time vision · Temporal models</span>
+              <h3>AI Event Monitoring <em>Dashboard</em></h3>
+              <p>A real-time safety layer for CCTV: YOLOv8 spots fire, smoke, crowd surges and people who have collapsed, while an LSTM reads the sequence over time to cut false alarms. Operators get alerts, timeline playback and acknowledgement in one UI.</p>
+              <dl><div><dt>&lt;40<small>ms</small></dt><dd>Per frame, on GPU</dd></div><div><dt>4</dt><dd>Event classes</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>YOLOv8</li><li>LSTM</li><li>MediaPipe</li><li>OpenCV</li><li>React</li><li>Node.js</li></ul>
+                <a class="link" href="https://github.com/badrinathnandaluri/AI_Event_Monitoring_Dashboard" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a></div>
+            </div>
+          </article>
 
-      <!-- More -->
-      <div class="more">
-        <span class="mono more__label">Also built</span>
-        <ul class="more__list">
-          <li class="reveal">
-            <h4>Loanlytic</h4>
-            <p>Loan-risk platform with OCR document extraction, tree-based and XGBoost classifiers, and a dashboard surfacing feature importance for reviewers.</p>
-            <span class="mono">Scikit-learn · XGBoost · Tesseract · MERN</span>
-          </li>
-          <li class="reveal">
-            <a href="https://github.com/badrinathnandaluri/apartment-billing-app" target="_blank" rel="noopener" data-cursor="Open"><h4>Apartment Billing <span>↗</span></h4></a>
-            <p>Monthly water-billing app for a 12-flat complex: persistent meter history, rounding rules and a print-ready PDF ledger.</p>
-            <span class="mono">Python · Streamlit · SQLite</span>
-          </li>
-          <li class="reveal">
-            <h4>Supply Chain Management</h4>
-            <p>Inventory, supplier and order modules on a normalised schema, with reorder alerts and role-based access.</p>
-            <span class="mono">Java · JDBC · MySQL</span>
-          </li>
-        </ul>
+          <!-- 05 -->
+          <article class="pd">
+            <div class="pd__viz viz v-loan" aria-hidden="true">
+              <div class="v-loan__doc">
+                <b>LOAN APPLICATION</b>
+                <i style="--w:82%"></i><i style="--w:64%"></i><i class="hit" style="--w:74%"></i><i style="--w:56%"></i>
+                <i class="hit" style="--w:70%"></i><i style="--w:88%"></i><i style="--w:48%"></i><i class="hit" style="--w:66%"></i>
+                <span class="v-loan__scan"></span>
+              </div>
+              <div class="v-loan__panel">
+                <svg class="v-loan__gauge" viewBox="0 0 200 136">
+                  <path class="track" d="M20 102 A80 80 0 0 1 180 102"/>
+                  <path class="fill" d="M20 102 A80 80 0 0 1 180 102" pathLength="100"/>
+                  <line class="needle" x1="100" y1="102" x2="100" y2="38"/>
+                  <circle cx="100" cy="102" r="6"/>
+                  <text x="100" y="132">LOW RISK</text>
+                </svg>
+                <ul class="v-loan__bars mono">
+                  <li style="--v:.86;--k:0"><span>income / debt</span><i></i></li>
+                  <li style="--v:.64;--k:1"><span>repayment history</span><i></i></li>
+                  <li style="--v:.41;--k:2"><span>credit age</span><i></i></li>
+                </ul>
+              </div>
+              <span class="v-label v-label--l mono">OCR · extract</span>
+              <span class="v-label v-label--r mono">XGBoost · score</span>
+            </div>
+            <div class="pd__body">
+              <span class="label label--inv">ML · Fintech</span>
+              <h3>Loanlytic <em>— loan-risk analytics</em></h3>
+              <p>A loan-risk platform with OCR document extraction, tree-based and XGBoost classifiers, conservative business-rule overlays, and a dashboard that surfaces feature importance for the person reviewing the case.</p>
+              <dl><div><dt>1,000<small>+</small></dt><dd>Records processed</dd></div><div><dt>OCR → score</dt><dd>End to end</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>Scikit-learn</li><li>XGBoost</li><li>Tesseract OCR</li><li>OpenCV</li><li>MERN</li></ul></div>
+            </div>
+          </article>
+
+          <!-- 06 -->
+          <article class="pd">
+            <div class="pd__viz viz v-bill" aria-hidden="true">
+              <div class="v-bill__grid mono">
+                <div style="--k:0"><b>101</b><span>0482</span></div><div style="--k:1"><b>102</b><span>0517</span></div>
+                <div style="--k:2"><b>103</b><span>0390</span></div><div style="--k:3"><b>104</b><span>0611</span></div>
+                <div style="--k:4"><b>201</b><span>0455</span></div><div style="--k:5"><b>202</b><span>0298</span></div>
+                <div style="--k:6"><b>203</b><span>0573</span></div><div style="--k:7"><b>204</b><span>0402</span></div>
+                <div style="--k:8"><b>301</b><span>0366</span></div><div style="--k:9"><b>302</b><span>0529</span></div>
+                <div style="--k:10"><b>303</b><span>0447</span></div><div style="--k:11"><b>304</b><span>0381</span></div>
+              </div>
+              <div class="v-bill__printer">
+                <i class="v-bill__slot"></i>
+                <div class="v-bill__paper mono">
+                  <b>Water bill</b>
+                  <p><span>Meter units</span><i style="--w:70%"></i></p>
+                  <p><span>Tankers</span><i style="--w:45%"></i></p>
+                  <p><span>Watchman</span><i style="--w:55%"></i></p>
+                  <p><span>Garbage</span><i style="--w:30%"></i></p>
+                  <p class="tot"><span>Total</span><i style="--w:80%"></i></p>
+                  <em>PDF ↓</em>
+                </div>
+              </div>
+              <span class="v-label v-label--l mono">12 flats · meter readings</span>
+            </div>
+            <div class="pd__body">
+              <span class="label label--inv">Utility app · In daily use</span>
+              <h3>Apartment Billing <em>&amp; management</em></h3>
+              <p>A monthly water-billing app for a 12-flat apartment complex: persistent meter history, automatic rounding rules, variable expenses and a print-ready two-page PDF that matches the old paper ledger.</p>
+              <dl><div><dt>12</dt><dd>Flats billed monthly</dd></div><div><dt>PDF</dt><dd>Ledger-format output</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>Python</li><li>Streamlit</li><li>SQLite</li></ul>
+                <a class="link" href="https://github.com/badrinathnandaluri/apartment-billing-app" target="_blank" rel="noopener" data-cursor="Open">View code <span>↗</span></a></div>
+            </div>
+          </article>
+
+          <!-- 07 -->
+          <article class="pd">
+            <div class="pd__viz viz v-sup" aria-hidden="true">
+              <div class="v-sup__flow mono">
+                <span class="v-sup__node">Supplier</span>
+                <span class="v-sup__node">Warehouse</span>
+                <span class="v-sup__node">Orders</span>
+                <i class="v-sup__pkt"></i><i class="v-sup__pkt"></i><i class="v-sup__pkt"></i>
+              </div>
+              <div class="v-sup__stock">
+                <i style="--h:72%"></i><i style="--h:58%"></i><i class="low"></i><i style="--h:84%"></i><i style="--h:63%"></i><i style="--h:77%"></i>
+                <span class="v-sup__line mono"><b>reorder point</b></span>
+                <span class="v-sup__alert mono">↻ reorder</span>
+              </div>
+            </div>
+            <div class="pd__body">
+              <span class="label label--inv">Systems · Databases</span>
+              <h3>Supply Chain <em>Management System</em></h3>
+              <p>Inventory, supplier and order modules on a normalised schema with transactional order flows, reorder-point and lead-time reports, and role-based access for warehouse and procurement users.</p>
+              <dl><div><dt>3</dt><dd>Core modules</dd></div><div><dt>Auto</dt><dd>Reorder alerts</dd></div></dl>
+              <div class="pd__foot"><ul class="chips"><li>Java</li><li>JDBC</li><li>MySQL</li></ul></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="works__nav">
+          <button type="button" id="workPrev" aria-label="Previous project" data-magnetic>↑</button>
+          <button type="button" id="workNext" aria-label="Next project" data-magnetic>↓</button>
+        </div>
       </div>
     </section>
 
-    <!-- ============ SKILLS ============ -->
-    <section class="section skills" id="skills">
-      <div class="section__head">
-        <span class="mono idx">04</span>
-        <span class="mono">Toolkit</span>
+    <!-- ============ TOOLKIT ============ -->
+    <section class="skills" id="skills" data-theme="light">
+      <div class="band" aria-hidden="true">
+        <div class="band__row" data-dir="-1"><div><span>RAG</span><i>✳</i><span class="o">PyTorch</span><i>✳</i><span>LLMs</span><i>✳</i><span class="o">Diffusion</span><i>✳</i><span>YOLOv8</span><i>✳</i><span class="o">Embeddings</span><i>✳</i><span>RAG</span><i>✳</i><span class="o">PyTorch</span><i>✳</i><span>LLMs</span><i>✳</i><span class="o">Diffusion</span><i>✳</i><span>YOLOv8</span><i>✳</i><span class="o">Embeddings</span><i>✳</i></div></div>
+        <div class="band__row" data-dir="1"><div><span class="o">React</span><i>✳</i><span>Python</span><i>✳</i><span class="o">Node.js</span><i>✳</i><span>OpenCV</span><i>✳</i><span class="o">Docker</span><i>✳</i><span>MongoDB</span><i>✳</i><span class="o">React</span><i>✳</i><span>Python</span><i>✳</i><span class="o">Node.js</span><i>✳</i><span>OpenCV</span><i>✳</i><span class="o">Docker</span><i>✳</i><span>MongoDB</span><i>✳</i></div></div>
       </div>
-      <h2 class="section__title" data-split>What I reach for, <em>from model to interface.</em></h2>
 
-      <div class="skills__grid">
-        <div class="skill reveal">
-          <span class="mono">AI · LLMs</span>
-          <ul><li>RAG pipelines</li><li>LLM applications</li><li>Embeddings</li><li>ChromaDB</li><li>Ollama</li><li>Prompt engineering</li><li>AI-agent evaluation</li></ul>
-        </div>
-        <div class="skill reveal">
-          <span class="mono">ML · Vision</span>
-          <ul><li>PyTorch</li><li>TensorFlow</li><li>Scikit-learn</li><li>Diffusion models</li><li>YOLOv8</li><li>LSTM</li><li>OpenCV</li></ul>
-        </div>
-        <div class="skill reveal">
-          <span class="mono">Languages</span>
-          <ul><li>Python</li><li>Java</li><li>JavaScript</li><li>C / C++</li><li>SQL</li></ul>
-        </div>
-        <div class="skill reveal">
-          <span class="mono">Web · Backend</span>
-          <ul><li>React</li><li>Node.js</li><li>Express</li><li>REST APIs</li><li>Streamlit</li><li>HTML / CSS</li></ul>
-        </div>
-        <div class="skill reveal">
-          <span class="mono">Data · Tools</span>
-          <ul><li>MongoDB</li><li>MySQL</li><li>Git / GitHub</li><li>Docker</li><li>Postman</li></ul>
-        </div>
-        <div class="skill reveal">
-          <span class="mono">Foundations</span>
-          <ul><li>Data structures &amp; algorithms</li><li>OOP</li><li>DBMS</li><li>Operating systems</li><li>Computer networks</li></ul>
+      <div class="wrap">
+        <div class="sec-head"><span class="label">04 — Toolkit</span></div>
+        <h2 class="h2" data-split>What I reach for, <em>from model to interface.</em></h2>
+        <div class="grid6">
+          <div class="cell reveal"><span class="label">AI · LLMs</span><ul><li>RAG pipelines</li><li>LLM applications</li><li>Embeddings</li><li>ChromaDB</li><li>Ollama</li><li>Prompt engineering</li><li>AI-agent evaluation</li></ul></div>
+          <div class="cell reveal"><span class="label">ML · Vision</span><ul><li>PyTorch</li><li>TensorFlow</li><li>Scikit-learn</li><li>Diffusion models</li><li>YOLOv8</li><li>LSTM</li><li>OpenCV</li></ul></div>
+          <div class="cell reveal"><span class="label">Languages</span><ul><li>Python</li><li>Java</li><li>JavaScript</li><li>C / C++</li><li>SQL</li></ul></div>
+          <div class="cell reveal"><span class="label">Web · Backend</span><ul><li>React</li><li>Node.js</li><li>Express</li><li>REST APIs</li><li>Streamlit</li><li>HTML / CSS</li></ul></div>
+          <div class="cell reveal"><span class="label">Data · Tools</span><ul><li>MongoDB</li><li>MySQL</li><li>Git / GitHub</li><li>Docker</li><li>Postman</li></ul></div>
+          <div class="cell reveal"><span class="label">Foundations</span><ul><li>Data structures &amp; algorithms</li><li>OOP</li><li>DBMS</li><li>Operating systems</li><li>Computer networks</li></ul></div>
         </div>
       </div>
     </section>
 
     <!-- ============ BEYOND ============ -->
-    <section class="section beyond" id="beyond">
-      <div class="section__head">
-        <span class="mono idx">05</span>
-        <span class="mono">Beyond the code</span>
-      </div>
-      <h2 class="section__title" data-split>Leading rooms, <em>not just repos.</em></h2>
+    <section class="beyond" id="beyond" data-theme="light">
+      <div class="wrap">
+        <div class="sec-head"><span class="label">05 — Beyond the code</span></div>
+        <h2 class="h2" data-split>Leading rooms, <em>not just repos.</em></h2>
 
-      <div class="beyond__grid">
-        <div class="lead reveal">
-          <span class="mono">Leadership</span>
-          <h3>Non-Technical Head, CSI Student Chapter <span class="dim">· VNR VJIET</span></h3>
-          <ul class="lead__list">
-            <li><strong>VJ Hackathon</strong><span>National-level hackathon — managed 5,000+ participants.</span></li>
-            <li><strong>Flashforte</strong><span>Tech onboarding events for 1,000+ freshers.</span></li>
-            <li><strong>CoDSAga</strong><span>Coordinated the programme and spoke at its DSA sessions.</span></li>
-          </ul>
-        </div>
+        <ul class="rows">
+          <li class="row reveal"><span class="row__k label">Leadership</span><span class="row__t">Non-Technical Head, CSI Student Chapter</span><span class="row__d">VNR VJIET — operations, outreach and flagship events</span></li>
+          <li class="row reveal"><span class="row__k label">Event</span><span class="row__t">VJ Hackathon</span><span class="row__d">National-level hackathon with 5,000+ participants</span></li>
+          <li class="row reveal"><span class="row__k label">Event</span><span class="row__t">Flashforte</span><span class="row__d">Tech onboarding events for 1,000+ freshers</span></li>
+          <li class="row reveal"><span class="row__k label">Teaching</span><span class="row__t">CoDSAga</span><span class="row__d">Coordinated the programme and spoke at its DSA sessions</span></li>
+          <li class="row reveal"><span class="row__k label">2025</span><span class="row__t">Finalist — Synapse, NIT Calicut</span><span class="row__d">24-hour national hackathon</span></li>
+          <li class="row reveal"><span class="row__k label">2025</span><span class="row__t">Finalist — Technovista</span><span class="row__d">24-hour hackathon</span></li>
+          <li class="row reveal"><span class="row__k label">2023 · 24</span><span class="row__t">Finalist — Krithoathon 1.0 &amp; 2.0</span><span class="row__d">National-level 24-hour hackathon, two years running</span></li>
+          <li class="row reveal"><span class="row__k label">2024</span><span class="row__t">Recognised — GETSETPY</span><span class="row__d">ML model for Employee Work Efficiency Analysis</span></li>
+        </ul>
 
-        <div class="honors">
-          <div class="honor reveal">
-            <span class="mono">Achievements</span>
-            <ul>
-              <li><b>Finalist</b> — Krithoathon 1.0 <i>2023</i></li>
-              <li><b>Finalist</b> — Krithoathon 2.0, national 24-hr <i>2024</i></li>
-              <li><b>Finalist</b> — Technovista 24-hr Hackathon <i>2025</i></li>
-              <li><b>Finalist</b> — Synapse, NIT Calicut <i>2025</i></li>
-              <li><b>Recognised</b> — Employee Work Efficiency model, GETSETPY <i>2024</i></li>
-            </ul>
-          </div>
-          <div class="honor reveal">
-            <span class="mono">Certifications</span>
-            <ul>
-              <li>Smart Coder <i>Smart Interviews</i></li>
-              <li>Machine Learning Model Development</li>
-              <li>Distributed Version Control with Git</li>
-              <li>Product Design &amp; Wireframing with Figma</li>
-              <li>Django Web Development</li>
-            </ul>
-          </div>
-          <div class="honor reveal">
-            <span class="mono">Off screen</span>
-            <ul>
-              <li>Volleyball — 25+ tournaments for the college team</li>
-              <li>NSS volunteer — blood drives and awareness campaigns</li>
-            </ul>
-          </div>
+        <div class="trio">
+          <div class="reveal"><span class="label">Certifications</span><ul><li>Smart Coder — Smart Interviews</li><li>Machine Learning Model Development</li><li>Distributed Version Control with Git</li><li>Product Design &amp; Wireframing with Figma</li><li>Django Web Development</li></ul></div>
+          <div class="reveal"><span class="label">Off screen</span><ul><li>Volleyball — 25+ tournaments for the college team</li><li>NSS volunteer — blood drives and awareness campaigns</li></ul></div>
         </div>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact">
-      <span class="mono contact__kicker"><i class="dot"></i>Open to SDE &amp; AI engineering roles · Class of 2027</span>
-      <h2 class="contact__title" data-split>Let's build <em>something that works.</em></h2>
-
-      <a class="contact__mail" href="mailto:badrinath.nandaluri@gmail.com" data-magnetic data-cursor="Write">
-        <span>badrinath.nandaluri@gmail.com</span><b>↗</b>
-      </a>
-
-      <div class="contact__row">
-        <a href="tel:+918096919998" data-cursor="Call"><span class="mono">Phone</span>+91 80969 19998</a>
-        <a href="https://www.linkedin.com/in/badrinath-nandaluri" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">LinkedIn</span>badrinath-nandaluri ↗</a>
-        <a href="https://github.com/badrinathnandaluri" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">GitHub</span>badrinathnandaluri ↗</a>
-        <a href="https://www.instagram.com/badrinath_nandaluri" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">Instagram</span>badrinath_nandaluri ↗</a>
-        <a href="assets/Badrinath_Nandaluri_Resume.pdf" target="_blank" rel="noopener" data-cursor="PDF"><span class="mono">Résumé</span>Download PDF ↓</a>
+    <section class="contact" id="contact" data-theme="dark">
+      <canvas class="swirl" id="swirlContact" aria-hidden="true"></canvas>
+      <div class="contact__shade"></div>
+      <div class="contact__in">
+        <span class="label label--inv"><i class="live"></i>Open to SDE &amp; AI engineering roles · Class of 2027</span>
+        <h2 class="contact__title" aria-label="Let's talk"><span class="chars">Let's</span> <span class="chars">talk</span></h2>
+        <a class="contact__mail" href="mailto:badrinath.nandaluri@gmail.com" data-magnetic data-cursor="Write"><span>badrinath.nandaluri@gmail.com</span><b>↗</b></a>
+        <div class="contact__row">
+          <a href="tel:+918096919998"><span class="label label--inv">Phone</span>+91 80969 19998</a>
+          <a href="https://www.linkedin.com/in/badrinath-nandaluri" target="_blank" rel="noopener"><span class="label label--inv">LinkedIn</span>badrinath-nandaluri ↗</a>
+          <a href="https://github.com/badrinathnandaluri" target="_blank" rel="noopener"><span class="label label--inv">GitHub</span>badrinathnandaluri ↗</a>
+          <a href="https://www.instagram.com/badrinath_nandaluri" target="_blank" rel="noopener"><span class="label label--inv">Instagram</span>badrinath_nandaluri ↗</a>
+          <a href="assets/Badrinath_Nandaluri_Resume.pdf" target="_blank" rel="noopener"><span class="label label--inv">Résumé</span>Download PDF ↓</a>
+        </div>
+        <footer class="footer label label--inv">
+          <span>© <span id="year">2026</span> Badrinath Nandaluri</span>
+          <span>Hyderabad <span id="clock">--:--</span> IST</span>
+          <a href="#top">Back to top ↑</a>
+        </footer>
       </div>
-
-      <footer class="footer mono">
-        <span>© <span id="year">2026</span> Badrinath Nandaluri</span>
-        <span>Hyderabad <span id="clock">--:--</span> IST</span>
-        <a href="#top">Back to top ↑</a>
-      </footer>
     </section>
   </main>
 

@@ -1,0 +1,80 @@
+/* ---------- Portrait: ~7% larger, head lifted into the first line of the name ---------- */
+.hero__portrait {
+  bottom: auto;
+  top: calc(max(4.6rem, var(--ptop) - var(--fs) * 0.98) + var(--fs) * 0.45);
+  height: calc((100% - var(--ptop)) * 1.07);
+}
+
+/* ---------- Project visuals 05–07 ---------- */
+@keyframes v-scan { 0% { top: 6%; } 50% { top: 88%; } 100% { top: 6%; } }
+@keyframes v-hit { 0%, 30% { background: rgba(12, 12, 12, 0.18); } 40%, 85% { background: var(--accent); } 100% { background: rgba(12, 12, 12, 0.18); } }
+@keyframes v-gauge { 0%, 8% { stroke-dashoffset: 100; } 40%, 85% { stroke-dashoffset: 72; } 100% { stroke-dashoffset: 100; } }
+@keyframes v-needle { 0%, 8% { transform: rotate(-90deg); } 40%, 85% { transform: rotate(-40deg); } 100% { transform: rotate(-90deg); } }
+@keyframes v-bar { 0%, 10% { transform: scaleX(0); } 45%, 85% { transform: scaleX(var(--v)); } 100% { transform: scaleX(0); } }
+
+/* 05 Loanlytic — document scan → risk gauge */
+.v-loan { background: radial-gradient(80% 70% at 85% 15%, rgba(255, 92, 53, 0.16), transparent 60%), #0f0f10; }
+.v-loan__doc { position: absolute; left: 8%; top: 11%; height: 70%; aspect-ratio: 3 / 4; padding: 7% 6%; display: flex; flex-direction: column; justify-content: space-between; border-radius: 6px; background: #ebe7de; transform: rotate(-3deg); box-shadow: 0 24px 50px -18px #000; overflow: hidden; }
+.v-loan__doc b { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.08em; color: #0c0c0c; }
+.v-loan__doc i { display: block; height: 6%; width: var(--w); border-radius: 2px; background: rgba(12, 12, 12, 0.18); }
+.v-loan__doc i.hit { animation: v-hit 5s var(--ease-io) infinite; }
+.v-loan__scan { position: absolute; left: 0; right: 0; height: 18%; margin-top: -9%; background: linear-gradient(180deg, transparent, rgba(255, 92, 53, 0.35) 70%, var(--accent) 72%, transparent 74%); animation: v-scan 5s var(--ease-io) infinite; }
+.v-loan__panel { position: absolute; right: 7%; top: 10%; bottom: 18%; width: 46%; display: flex; flex-direction: column; gap: 6%; }
+.v-loan__gauge { flex: 1 1 0; min-height: 0; width: 100%; overflow: visible; }
+.v-loan__gauge path { fill: none; stroke-width: 14; stroke-linecap: round; }
+.v-loan__gauge .track { stroke: var(--line-2); }
+.v-loan__gauge .fill { stroke: var(--ok); stroke-dasharray: 100; stroke-dashoffset: 100; animation: v-gauge 5s var(--ease-io) infinite; }
+.v-loan__gauge .needle { stroke: var(--fg); stroke-width: 3; stroke-linecap: round; transform-origin: 100px 102px; animation: v-needle 5s var(--ease-io) infinite; }
+.v-loan__gauge circle { fill: var(--fg); }
+.v-loan__gauge text { fill: var(--ok); font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-anchor: middle; }
+.v-loan__bars { flex: none; display: grid; gap: 0.45rem; text-transform: none; letter-spacing: 0.02em; }
+.v-loan__bars li { display: grid; gap: 0.2rem; font-size: 0.58rem; color: var(--muted); }
+.v-loan__bars i { display: block; height: 5px; border-radius: 3px; background: var(--line); position: relative; overflow: hidden; }
+.v-loan__bars i::after { content: ""; position: absolute; inset: 0; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); animation: v-bar 5s var(--ease-io) infinite; animation-delay: calc(var(--k) * 0.15s); }
+
+/* 06 Apartment billing — 12 meters → printed bill */
+@keyframes v-flat { 0%, 100% { border-color: var(--line-2); background: rgba(236, 232, 223, 0.03); color: var(--muted); } 4%, 9% { border-color: var(--accent); background: var(--accent-soft); color: var(--fg); } 14% { border-color: var(--line-2); background: rgba(236, 232, 223, 0.03); color: var(--muted); } }
+@keyframes v-print { 0%, 20% { transform: translateY(-62%); } 55%, 90% { transform: translateY(0); } 100% { transform: translateY(-62%); } }
+.v-bill { background: radial-gradient(70% 70% at 15% 85%, rgba(52, 66, 170, 0.28), transparent 65%), #0f0f10; }
+.v-bill__grid { position: absolute; left: 6%; top: 11%; bottom: 20%; width: 50%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 6px; }
+.v-bill__grid div { display: flex; flex-direction: column; justify-content: space-between; padding: 7px 8px; border: 1px solid var(--line-2); border-radius: 8px; color: var(--muted); animation: v-flat 6s linear infinite; animation-delay: calc(var(--k) * 0.15s); }
+.v-bill__grid b { font-weight: 500; font-size: 0.6rem; letter-spacing: 0.06em; }
+.v-bill__grid span { font-size: clamp(0.7rem, 1.1vw, 0.95rem); letter-spacing: 0.04em; color: var(--fg); font-variant-numeric: tabular-nums; }
+.v-bill__printer { position: absolute; right: 6%; top: 8%; bottom: 0; width: 34%; overflow: hidden; }
+.v-bill__slot { position: absolute; left: 0; right: 0; top: 0; height: 8px; border-radius: 4px; background: #2a2a2c; z-index: 2; }
+.v-bill__paper { position: absolute; left: 5%; right: 5%; top: 4px; display: grid; gap: 0.55rem; padding: 14% 10% 16%; background: #ebe7de; color: #0c0c0c; border-radius: 0 0 4px 4px; text-transform: none; letter-spacing: 0.02em; animation: v-print 6s var(--ease-io) infinite; }
+.v-bill__paper b { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px dashed rgba(12, 12, 12, 0.35); }
+.v-bill__paper p { display: grid; grid-template-columns: 1fr 40%; align-items: center; gap: 0.4rem; font-size: 0.56rem; color: #3a3935; }
+.v-bill__paper p i { display: block; justify-self: end; height: 5px; width: var(--w); border-radius: 2px; background: rgba(12, 12, 12, 0.35); }
+.v-bill__paper p.tot { padding-top: 0.45rem; border-top: 1px dashed rgba(12, 12, 12, 0.35); font-weight: 500; color: #0c0c0c; }
+.v-bill__paper p.tot i { background: #0c0c0c; height: 7px; }
+.v-bill__paper em { justify-self: start; font-family: var(--mono); font-style: normal; font-size: 0.55rem; padding: 0.2rem 0.45rem; border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; transform: rotate(-4deg); }
+
+/* 07 Supply chain — moving stock + reorder alert */
+@keyframes v-pkt { 0% { left: 14%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { left: 84%; opacity: 0; } }
+@keyframes v-drain { 0%, 12% { height: 70%; background: rgba(236, 232, 223, 0.22); } 45% { height: 22%; background: var(--accent); } 70% { height: 22%; background: var(--accent); } 85%, 100% { height: 70%; background: rgba(236, 232, 223, 0.22); } }
+@keyframes v-alert { 0%, 40%, 74%, 100% { opacity: 0; transform: translateY(6px); } 48%, 68% { opacity: 1; transform: none; } }
+.v-sup { background: radial-gradient(70% 60% at 50% 0%, rgba(255, 92, 53, 0.14), transparent 65%), #0f0f10; }
+.v-sup__flow { position: absolute; left: 6%; right: 6%; top: 10%; height: 18%; display: flex; justify-content: space-between; align-items: center; }
+.v-sup__flow::before { content: ""; position: absolute; left: 10%; right: 10%; top: 50%; border-top: 1px dashed var(--line-2); }
+.v-sup__node { position: relative; z-index: 1; padding: 0.5rem 0.8rem; border: 1px solid var(--line-2); border-radius: 999px; background: #151516; color: var(--fg); font-size: 0.6rem; }
+.v-sup__node:nth-child(2) { border-color: var(--accent); color: var(--accent); }
+.v-sup__pkt { position: absolute; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 2px; background: var(--fg); animation: v-pkt 4.5s linear infinite; }
+.v-sup__pkt:nth-of-type(2) { animation-delay: -1.5s; }
+.v-sup__pkt:nth-of-type(3) { animation-delay: -3s; }
+.v-sup__stock { position: absolute; left: 6%; right: 6%; top: 38%; bottom: 12%; display: flex; align-items: flex-end; gap: 4%; padding: 0 2%; border-bottom: 1px solid var(--line-2); }
+.v-sup__stock > i { flex: 1; height: var(--h); border-radius: 6px 6px 0 0; background: rgba(236, 232, 223, 0.22); }
+.v-sup__stock > i:nth-child(4) { background: rgba(236, 232, 223, 0.32); }
+.v-sup__stock > i.low { animation: v-drain 6s var(--ease-io) infinite; }
+.v-sup__line { position: absolute; left: 0; right: 0; bottom: 34%; border-top: 1.5px dashed var(--accent); text-transform: none; letter-spacing: 0.02em; }
+.v-sup__line b { position: absolute; right: 0; bottom: 4px; font-weight: 400; font-size: 0.56rem; color: var(--accent); }
+.v-sup__alert { position: absolute; left: 25%; top: -2%; padding: 0.3rem 0.55rem; border-radius: 6px; background: var(--accent); color: #0c0c0c; font-size: 0.58rem; font-weight: 500; animation: v-alert 6s var(--ease-io) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .v-loan__gauge .fill { stroke-dashoffset: 72; }
+  .v-loan__gauge .needle { transform: rotate(-40deg); }
+  .v-loan__bars i::after { transform: scaleX(var(--v)); }
+  .v-bill__paper { transform: none; }
+  .v-sup__stock > i.low { height: 22%; background: var(--accent); }
+  .v-sup__alert { opacity: 1; transform: none; }
+}
